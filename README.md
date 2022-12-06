@@ -1,6 +1,6 @@
 # SpringBoot-vehicle-API :green_book:
 
-:bulb: The API will provide CRUD functionalitites for vehicles.
+:bulb: The API provides CRUD functionalitites for vehicles.
 
 :computer: The vehicle details are stored in a mysql database. For database versioning i'm using Liquibase.
 
