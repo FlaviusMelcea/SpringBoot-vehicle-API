@@ -1,6 +1,6 @@
 package com.vehicle.app.vehicleApi.Models;
 
-import jakarta.persistence.*;
+import javax.persistence.*;
 
 @Entity
 public class Vehicle {
