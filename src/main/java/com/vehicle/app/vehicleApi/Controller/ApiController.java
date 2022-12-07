@@ -2,10 +2,12 @@ package com.vehicle.app.vehicleApi.Controller;
 
 import com.vehicle.app.vehicleApi.Models.Vehicle;
 import com.vehicle.app.vehicleApi.Repo.VehicleRepo;
+import liquibase.pro.packaged.V;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 public class ApiController {
@@ -14,7 +16,7 @@ public class ApiController {
     private VehicleRepo vehicleRepo;
 
     @GetMapping(value = "/vehicles")
-    public List<Vehicle> getVehicles(){
+    public List<Vehicle> getVehicles() {
         return vehicleRepo.findAll();
     }
 
@@ -25,7 +27,7 @@ public class ApiController {
     }
 
     @PutMapping(value = "/update/{id}")
-    public String updateVehicle(@PathVariable long id, @RequestBody Vehicle vehicle){
+    public String updateVehicle(@PathVariable int id, @RequestBody Vehicle vehicle){
         Vehicle updatedVehicle = vehicleRepo.findById(id).get();
         updatedVehicle.setBrand(vehicle.getBrand());
         updatedVehicle.setModel(vehicle.getModel());
@@ -37,9 +39,10 @@ public class ApiController {
     }
 
     @DeleteMapping(value = "/delete/{id}")
-    public String deleteVehicle(@PathVariable long id){
+    public String deleteVehicle(@PathVariable int id){
         Vehicle deleteVehicle = vehicleRepo.findById(id).get();
         vehicleRepo.delete(deleteVehicle);
         return "Delete vehicle with the id: " + id;
     }
+
 }

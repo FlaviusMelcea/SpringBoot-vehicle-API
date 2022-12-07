@@ -3,10 +3,12 @@ package com.vehicle.app.vehicleApi.Models;
 import javax.persistence.*;
 
 @Entity
+@Table(name = "Vehicles")
 public class Vehicle {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private int id;
+
     @Column
     private String vin;
     @Column
@@ -18,11 +20,16 @@ public class Vehicle {
     @Column
     private double price;
 
+    public Vehicle() {
+
+    }
+
+
     public long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(int id) {
         this.id = id;
     }
 
