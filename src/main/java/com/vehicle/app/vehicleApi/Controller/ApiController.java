@@ -27,7 +27,7 @@ public class ApiController {
     }
 
     @PutMapping(value = "/update/{id}")
-    public String updateVehicle(@PathVariable int id, @RequestBody Vehicle vehicle){
+    public String updateVehicle(@PathVariable Integer id, @RequestBody Vehicle vehicle){
         Vehicle updatedVehicle = vehicleRepo.findById(id).get();
         updatedVehicle.setBrand(vehicle.getBrand());
         updatedVehicle.setModel(vehicle.getModel());
@@ -39,7 +39,7 @@ public class ApiController {
     }
 
     @DeleteMapping(value = "/delete/{id}")
-    public String deleteVehicle(@PathVariable int id){
+    public String deleteVehicle(@PathVariable Integer id){
         Vehicle deleteVehicle = vehicleRepo.findById(id).get();
         vehicleRepo.delete(deleteVehicle);
         return "Delete vehicle with the id: " + id;
