@@ -10,14 +10,11 @@ import lombok.*;
 @ToString
 public class VehiclesDetailsDto {
 
-    private String vin;
-
     private String brand;
 
     private String model;
 
-    private int year;
+    private Integer year;
 
-    private String color;
 
 }

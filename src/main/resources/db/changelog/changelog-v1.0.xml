@@ -5,4 +5,72 @@
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
 
+    <changeSet id="Create VEHICLES table" author="Melcea Flavius">
+        <createTable tableName="vehicles">
+            <column name="id" type="int" autoIncrement="true">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="vin" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="brand" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="model" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="year" type="int">
+                <constraints nullable="false"/>
+            </column>
+            <column name="price" type="decimal">
+                <constraints nullable="false"/>
+            </column>
+            <column name="color" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="releasedate" type="date">
+                <constraints nullable="false"/>
+            </column>
+            <column name="yearsofwarranty" type="int">
+                <constraints nullable="false"/>
+            </column>
+            <column name="hasbuybackpromotion" type="boolean">
+                <constraints nullable="false"/>
+            </column>
+            <column name="unitsmade" type="int">
+                <constraints nullable="true"/>
+            </column>
+            <column name="userrating" type="int">
+                <constraints nullable="true"/>
+            </column>
+            <column name="emissionlevel" type="varchar(255)">
+                <constraints nullable="true"/>
+            </column>
+
+        </createTable>
+    </changeSet>
+
+
+    <changeSet id="Create VEHICLEFEATURES table" author="Melcea Flavius">
+        <createTable tableName="vehiclefeatures">
+            <column name="id" type="int" autoIncrement="true">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="code" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="name" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="description" type="varchar(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="price" type="decimal">
+                <constraints nullable="false"/>
+            </column>
+            <column name="vehicle_id" type="int">
+                <constraints foreignKeyName="vehicle_id" references="vehicles(id)"/>
+            </column>
+        </createTable>
+    </changeSet>
 </databaseChangeLog>

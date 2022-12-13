@@ -17,7 +17,7 @@ import java.util.Objects;
 @Entity(name = "Vehicle features")
 public class VehicleFeatures {
 
-@Id
+    @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String Code;

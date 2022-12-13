@@ -3,6 +3,7 @@ package com.vehicle.app.vehicleApi.Dto;
 import io.micrometer.core.lang.Nullable;
 import lombok.*;
 
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 
@@ -18,13 +19,13 @@ public class VehicleDto {
     private String vin;
     private String brand;
     private String model;
-    private int year;
+    private Integer year;
     private Double price;
 
     private List<VehicleFeaturesDto> vehicleFeaturesDtoList;
 
     private String color;
-    private Date releaseDate;
+    private LocalDate releaseDate;
     private Integer yearsOfWarranty;
     private Boolean hasBuybackPromotion;
 
