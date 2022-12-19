@@ -1,4 +1,4 @@
-package com.vehicle.app.vehicleApi.Dto;
+package com.vehicle.app.vehicleApi.vehicleBuyback;
 
 import lombok.*;
 
@@ -8,7 +8,8 @@ import lombok.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString
-public class VehiclesDetailsDto {
+@Builder
+public class VehiclesBuybackDto {
 
     private String brand;
 
