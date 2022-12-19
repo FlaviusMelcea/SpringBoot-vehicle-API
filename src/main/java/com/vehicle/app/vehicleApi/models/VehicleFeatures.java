@@ -1,22 +1,18 @@
-package com.vehicle.app.vehicleApi.Models;
+package com.vehicle.app.vehicleApi.models;
 
 import lombok.*;
-import org.hibernate.Hibernate;
+import org.springframework.stereotype.Component;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import java.util.Objects;
+import javax.persistence.*;
 
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString
-@Entity(name = "Vehicle features")
-public class VehicleFeatures {
+@Entity(name = "vehicle_features")
 
+public class VehicleFeatures {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
@@ -24,24 +20,5 @@ public class VehicleFeatures {
     private String name;
     private String description;
     private double price;
-
-    public boolean equals(Object x){
-
-        if(this==x)
-            return true;
-
-        if(x==null || Hibernate.getClass(this)!=Hibernate.getClass(x))
-            return false;
-
-        VehicleFeatures that = (VehicleFeatures)  x;
-        return id!=null && Objects.equals(id, that.id);
-    }
-
-    @Override
-    public int hashCode() {
-        return getClass().hashCode();
-    }
-
-
 
 }

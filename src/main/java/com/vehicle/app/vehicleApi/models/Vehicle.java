@@ -1,18 +1,18 @@
-package com.vehicle.app.vehicleApi.Models;
+package com.vehicle.app.vehicleApi.models;
 
 import io.micrometer.core.lang.Nullable;
 import lombok.*;
 
 import javax.persistence.*;
+import javax.transaction.Transactional;
 import java.time.LocalDate;
-import java.util.Date;
 import java.util.List;
 
 @Getter
 @Setter
 @NoArgsConstructor
-@RequiredArgsConstructor
 @AllArgsConstructor
+@Transactional
 @Entity
 @Table(name = "Vehicles")
 public class Vehicle {
@@ -21,28 +21,28 @@ public class Vehicle {
     @Column(name="id")
     private Integer id;
 
-    @Column(name = "vin")
     @NonNull
+    @Column(name = "Vin")
     private String vin;
 
-    @Column(name = "brand")
     @NonNull
+    @Column(name = "Brand")
     private String brand;
 
-    @Column(name = "model")
     @NonNull
+    @Column(name = "Model")
     private String model;
 
-    @Column(name = "year")
     @NonNull
+    @Column(name = "Year")
     private Integer year;
 
-    @Column(name="price")
     @NonNull
-    private double price;
+    @Column(name="Price")
+    private Double price;
 
     @NonNull
-    @Column(name="features")
+    @Column(name="Features")
     @OneToMany(targetEntity = VehicleFeatures.class, cascade = CascadeType.ALL)
     @JoinColumn(name = "vehicleId", referencedColumnName = "id")
     private List<VehicleFeatures> vehicleFeaturesList;
@@ -74,7 +74,5 @@ public class Vehicle {
     @Nullable
     @Column(name="emissionlevel")
     private String emissionLevel;
-
-
 
 }

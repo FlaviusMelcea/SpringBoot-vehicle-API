@@ -1,7 +1,8 @@
-package com.vehicle.app.vehicleApi.Dto;
+package com.vehicle.app.vehicleApi.dto;
 
 import io.micrometer.core.lang.Nullable;
 import lombok.*;
+import org.springframework.lang.NonNull;
 
 @Getter
 @Setter
@@ -14,5 +15,5 @@ public class VehicleFeaturesDto {
     private String code;
     private String name;
     private String description;
-    private double price;
+    private Double price;
 }

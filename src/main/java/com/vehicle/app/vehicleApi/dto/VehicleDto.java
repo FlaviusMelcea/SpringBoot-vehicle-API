@@ -1,10 +1,10 @@
-package com.vehicle.app.vehicleApi.Dto;
+package com.vehicle.app.vehicleApi.dto;
 
 import io.micrometer.core.lang.Nullable;
 import lombok.*;
 
+import javax.persistence.Id;
 import java.time.LocalDate;
-import java.util.Date;
 import java.util.List;
 
 @EqualsAndHashCode
@@ -15,6 +15,7 @@ import java.util.List;
 @ToString
 public class VehicleDto {
     @Nullable
+    @Id
     private Integer id;
     private String vin;
     private String brand;
@@ -29,11 +30,12 @@ public class VehicleDto {
     private Integer yearsOfWarranty;
     private Boolean hasBuybackPromotion;
 
-    @Nullable
-    private String emissionLevel;
+
     @Nullable
     private Integer unitsMade;
     @Nullable
     private Integer userRating;
+    @Nullable
+    private String emissionLevel;
 
 }

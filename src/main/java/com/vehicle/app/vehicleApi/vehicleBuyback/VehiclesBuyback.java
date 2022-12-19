@@ -9,13 +9,8 @@ import lombok.*;
 @AllArgsConstructor
 @ToString
 @Builder
-public class VehiclesBuybackDto {
-
+public class VehiclesBuyback {
     private String brand;
-
     private String model;
-
     private Integer year;
-
-
 }
