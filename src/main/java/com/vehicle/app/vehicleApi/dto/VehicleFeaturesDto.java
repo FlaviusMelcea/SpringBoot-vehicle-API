@@ -1,7 +1,8 @@
 package com.vehicle.app.vehicleApi.dto;
 
-import io.micrometer.core.lang.Nullable;
+
 import lombok.*;
+import org.jetbrains.annotations.Nullable;
 import org.springframework.lang.NonNull;
 
 @Getter

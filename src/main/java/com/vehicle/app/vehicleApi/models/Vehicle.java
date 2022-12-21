@@ -1,7 +1,7 @@
 package com.vehicle.app.vehicleApi.models;
 
-import io.micrometer.core.lang.Nullable;
 import lombok.*;
+import org.jetbrains.annotations.Nullable;
 
 import javax.persistence.*;
 import javax.transaction.Transactional;
@@ -13,6 +13,7 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Transactional
+@Builder
 @Entity
 @Table(name = "Vehicles")
 public class Vehicle {

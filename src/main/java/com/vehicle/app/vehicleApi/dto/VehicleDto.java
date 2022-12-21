@@ -1,7 +1,7 @@
 package com.vehicle.app.vehicleApi.dto;
 
-import io.micrometer.core.lang.Nullable;
 import lombok.*;
+import org.jetbrains.annotations.Nullable;
 
 import javax.persistence.Id;
 import java.time.LocalDate;
@@ -10,6 +10,7 @@ import java.util.List;
 @EqualsAndHashCode
 @Getter
 @Setter
+@Builder
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString
