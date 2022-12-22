@@ -6,5 +6,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface VehicleRepo extends JpaRepository<Vehicle, Integer> {
-    void deleteByBrandAndYear(final String brand, final Integer year);
+    void deleteByBrandAndYear(String brand, Integer year);
 }

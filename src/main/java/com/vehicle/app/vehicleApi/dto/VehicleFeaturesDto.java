@@ -3,7 +3,6 @@ package com.vehicle.app.vehicleApi.dto;
 
 import lombok.*;
 import org.jetbrains.annotations.Nullable;
-import org.springframework.lang.NonNull;
 
 @Getter
 @Setter

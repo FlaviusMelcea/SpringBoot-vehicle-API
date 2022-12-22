@@ -25,16 +25,14 @@ public class ApiController {
     private final VehicleFeaturesMapper vehicleFeaturesMapper;
 
     @PostMapping
-    public ResponseEntity<VehicleDto> create(@RequestBody VehicleDto vehicleDto)
-    {
+    public ResponseEntity<VehicleDto> create(@RequestBody VehicleDto vehicleDto) {
         Vehicle vehicle = vehicleMapper.toVehicle(vehicleDto);
         vehicleService.save(vehicle);
         return ResponseEntity.status(HttpStatus.CREATED).body(vehicleDto);
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<VehicleDto> update(@PathVariable Integer id,	@RequestBody VehicleDto vehicleDto)
-    {
+    public ResponseEntity<VehicleDto> update(@PathVariable Integer id, @RequestBody VehicleDto vehicleDto) {
         Vehicle vehicle = vehicleMapper.toVehicle(vehicleDto);
         vehicle.setId(id);
 
@@ -44,8 +42,7 @@ public class ApiController {
     }
 
     @PutMapping("/{brand}/{model}/{year}")
-    public ResponseEntity<VehicleFeaturesDto> update(@RequestBody VehicleFeaturesDto vehicleFeaturesDto)
-    {
+    public ResponseEntity<VehicleFeaturesDto> update(@RequestBody VehicleFeaturesDto vehicleFeaturesDto) {
         VehicleFeatures vehicleFeatures = vehicleFeaturesMapper.toVehicleF(vehicleFeaturesDto);
 
         vehicleService.save(vehicleFeatures);
@@ -55,30 +52,27 @@ public class ApiController {
 
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<?> delete(@PathVariable Integer id)
-    {
+    public ResponseEntity<?> delete(@PathVariable Integer id) {
         vehicleService.deleteById(id);
 
         return ResponseEntity.status(HttpStatus.ACCEPTED).build();
     }
-    @DeleteMapping("/{brand}/{year}")
-    public ResponseEntity<?> delete(@PathVariable String brand, @PathVariable Integer year){
-        vehicleService.deleteByBrandAndYear(brand, year);
 
+    @DeleteMapping("/{brand}/{year}")
+    public ResponseEntity<?> delete(@PathVariable String brand, @PathVariable Integer year) {
+        vehicleService.deleteByBrandAndYear(brand, year);
 
         return ResponseEntity.status(HttpStatus.ACCEPTED).build();
     }
 
     @GetMapping
-    public ResponseEntity<List<VehicleDto>> findAll()
-    {
+    public ResponseEntity<List<VehicleDto>> findAll() {
         List<VehicleDto> vehicleList = vehicleMapper.toVehicleDtos(vehicleService.findAll());
         return ResponseEntity.ok(vehicleList);
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<VehicleDto> findById(@PathVariable Integer id)
-    {
+    public ResponseEntity<VehicleDto> findById(@PathVariable Integer id) {
         Optional<Vehicle> vehicle = vehicleService.findById(id);
         VehicleDto vehicleDto = vehicleMapper.toVehicleDto(vehicle.get());
         return ResponseEntity.ok(vehicleDto);
@@ -86,8 +80,8 @@ public class ApiController {
 
 
     @GetMapping("/buyback")
-        public List<VehiclesBuyback> findAllVehiclesWithBuyback() {
+    public List<VehiclesBuyback> findAllVehiclesWithBuyback() {
         return vehicleService.getAllActiveBuyback();
-      }
+    }
 
 }

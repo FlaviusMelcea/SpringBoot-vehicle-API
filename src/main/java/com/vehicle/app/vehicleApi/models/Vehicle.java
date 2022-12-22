@@ -19,7 +19,7 @@ import java.util.List;
 public class Vehicle {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="id")
+    @Column(name = "id")
     private Integer id;
 
     @NonNull
@@ -39,41 +39,41 @@ public class Vehicle {
     private Integer year;
 
     @NonNull
-    @Column(name="Price")
+    @Column(name = "Price")
     private Double price;
 
     @NonNull
-    @Column(name="Features")
+    @Column(name = "Features")
     @OneToMany(targetEntity = VehicleFeatures.class, cascade = CascadeType.ALL)
     @JoinColumn(name = "vehicleId", referencedColumnName = "id")
     private List<VehicleFeatures> vehicleFeaturesList;
 
     @NonNull
-    @Column(name="color")
+    @Column(name = "color")
     private String color;
 
     @NonNull
-    @Column(name="releasedate")
+    @Column(name = "releasedate")
     private LocalDate releaseDate;
 
     @NonNull
-    @Column(name="yearsofwarranty")
+    @Column(name = "yearsofwarranty")
     private Integer yearsOfWarranty;
 
     @NonNull
-    @Column(name="hasbuybackpromotion")
+    @Column(name = "hasbuybackpromotion")
     private Boolean hasBuybackPromotion;
 
     @Nullable
-    @Column(name="unitsmade")
+    @Column(name = "unitsmade")
     private Integer unitsMade;
 
     @Nullable
-    @Column(name="userrating")
+    @Column(name = "userrating")
     private Integer userRating;
 
     @Nullable
-    @Column(name="emissionlevel")
+    @Column(name = "emissionlevel")
     private String emissionLevel;
 
 }

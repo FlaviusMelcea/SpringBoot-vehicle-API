@@ -12,9 +12,12 @@ import java.util.List;
 @Mapper(componentModel = "spring")
 public interface VehicleMapper {
     VehicleMapper INSTANCE = Mappers.getMapper(VehicleMapper.class);
-    @Mapping(target="vehicleFeaturesDtoList",source = "vehicleFeaturesList")
+
+    @Mapping(target = "vehicleFeaturesDtoList", source = "vehicleFeaturesList")
     VehicleDto toVehicleDto(Vehicle vehicle);
+
     List<VehicleDto> toVehicleDtos(List<Vehicle> vehicles);
-    @Mapping(target="vehicleFeaturesList",source = "vehicleFeaturesDtoList")
-      Vehicle toVehicle(VehicleDto vehicleDto);
+
+    @Mapping(target = "vehicleFeaturesList", source = "vehicleFeaturesDtoList")
+    Vehicle toVehicle(VehicleDto vehicleDto);
 }
