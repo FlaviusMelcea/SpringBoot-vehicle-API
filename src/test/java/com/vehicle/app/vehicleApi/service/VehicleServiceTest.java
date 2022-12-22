@@ -23,10 +23,10 @@ import java.util.Optional;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-
 @ContextConfiguration(classes = {VehicleService.class})
 @RunWith(SpringJUnit4ClassRunner.class)
 public class VehicleServiceTest {
@@ -157,7 +157,7 @@ public class VehicleServiceTest {
     public void testSave3() {
         VehicleFeatures vehicleFeatures = new VehicleFeatures();
         vehicleFeatures.setCode("Code");
-        vehicleFeatures.setDescription("The characteristics of someone or something");
+        vehicleFeatures.setDescription("Lol");
         vehicleFeatures.setId(1);
         vehicleFeatures.setName("Name");
         vehicleFeatures.setPrice(10.0d);
@@ -165,7 +165,7 @@ public class VehicleServiceTest {
 
         VehicleFeatures vehicleFeatures1 = new VehicleFeatures();
         vehicleFeatures1.setCode("Code");
-        vehicleFeatures1.setDescription("The characteristics of someone or something");
+        vehicleFeatures1.setDescription("Lol");
         vehicleFeatures1.setId(1);
         vehicleFeatures1.setName("Name");
         vehicleFeatures1.setPrice(10.0d);

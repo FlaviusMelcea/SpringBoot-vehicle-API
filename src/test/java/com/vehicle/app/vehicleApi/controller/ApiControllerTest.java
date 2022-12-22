@@ -5,6 +5,7 @@ import static org.mockito.Mockito.doNothing;
 import static org.mockito.Mockito.when;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import com.vehicle.app.vehicleApi.dto.VehicleDto;
 import com.vehicle.app.vehicleApi.dto.VehicleFeaturesDto;
 import com.vehicle.app.vehicleApi.mapper.VehicleFeaturesMapper;
@@ -23,6 +24,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.context.annotation.Bean;
 import org.springframework.http.MediaType;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
@@ -41,39 +43,10 @@ public class ApiControllerTest {
 
     @MockBean
     private VehicleFeaturesMapper vehicleFeaturesMapper;
-
     @MockBean
     private VehicleMapper vehicleMapper;
-
     @MockBean
     private VehicleService vehicleService;
-
-    @Test
-    @Ignore
-    public void testCreate() throws Exception {
-        //TODO.. finish this
-
-        MockHttpServletRequestBuilder contentTypeResult = MockMvcRequestBuilders.get("/vehicles")
-                .contentType(MediaType.APPLICATION_JSON);
-
-        VehicleDto vehicleDto = new VehicleDto();
-        vehicleDto.setBrand("Brand");
-        vehicleDto.setColor("Color");
-        vehicleDto.setEmissionLevel("Emission Level");
-        vehicleDto.setHasBuybackPromotion(true);
-        vehicleDto.setId(1);
-        vehicleDto.setModel("Model");
-        vehicleDto.setPrice(10.0d);
-        vehicleDto.setReleaseDate(LocalDate.ofEpochDay(1L));
-        vehicleDto.setUnitsMade(1);
-        vehicleDto.setUserRating(1);
-        vehicleDto.setVin("Vin");
-        vehicleDto.setYear(1);
-        vehicleDto.setYearsOfWarranty(1);
-        MockHttpServletRequestBuilder requestBuilder = contentTypeResult
-                .content((new ObjectMapper()).writeValueAsString(vehicleDto));
-        MockMvcBuilders.standaloneSetup(apiController).build().perform(requestBuilder);
-    }
 
     @Test
     public void testDelete() throws Exception {
@@ -237,7 +210,7 @@ public class ApiControllerTest {
     public void testUpdate() throws Exception {
         VehicleFeatures vehicleFeatures = new VehicleFeatures();
         vehicleFeatures.setCode("Code");
-        vehicleFeatures.setDescription("The characteristics of someone or something");
+        vehicleFeatures.setDescription("Lol");
         vehicleFeatures.setId(1);
         vehicleFeatures.setName("Name");
         vehicleFeatures.setPrice(10.0d);
@@ -245,7 +218,7 @@ public class ApiControllerTest {
 
         VehicleFeatures vehicleFeatures1 = new VehicleFeatures();
         vehicleFeatures1.setCode("Code");
-        vehicleFeatures1.setDescription("The characteristics of someone or something");
+        vehicleFeatures1.setDescription("Lol");
         vehicleFeatures1.setId(1);
         vehicleFeatures1.setName("Name");
         vehicleFeatures1.setPrice(10.0d);
@@ -253,7 +226,7 @@ public class ApiControllerTest {
 
         VehicleFeaturesDto vehicleFeaturesDto = new VehicleFeaturesDto();
         vehicleFeaturesDto.setCode("Code");
-        vehicleFeaturesDto.setDescription("The characteristics of someone or something");
+        vehicleFeaturesDto.setDescription("Lol");
         vehicleFeaturesDto.setId(1);
         vehicleFeaturesDto.setName("Name");
         vehicleFeaturesDto.setPrice(10.0d);
@@ -269,35 +242,8 @@ public class ApiControllerTest {
                 .andExpect(MockMvcResultMatchers.content().contentType("application/json"))
                 .andExpect(MockMvcResultMatchers.content()
                         .string(
-                                "{\"id\":1,\"code\":\"Code\",\"name\":\"Name\",\"description\":\"The characteristics of someone or something\",\"price"
+                                "{\"id\":1,\"code\":\"Code\",\"name\":\"Name\",\"description\":\"Lol\",\"price"
                                         + "\":10.0}"));
-    }
-
-    @Test
-    @Ignore
-    public void testUpdate2() throws Exception {
-     //TODO.. finish this
-
-        MockHttpServletRequestBuilder contentTypeResult = MockMvcRequestBuilders.put("/vehicles/{id}", 1)
-                .contentType(MediaType.APPLICATION_JSON);
-
-        VehicleDto vehicleDto = new VehicleDto();
-        vehicleDto.setBrand("Brand");
-        vehicleDto.setColor("Color");
-        vehicleDto.setEmissionLevel("Emission Level");
-        vehicleDto.setHasBuybackPromotion(true);
-        vehicleDto.setId(1);
-        vehicleDto.setModel("Model");
-        vehicleDto.setPrice(10.0d);
-        vehicleDto.setReleaseDate(LocalDate.ofEpochDay(1L));
-        vehicleDto.setUnitsMade(1);
-        vehicleDto.setUserRating(1);
-        vehicleDto.setVin("Vin");
-        vehicleDto.setYear(1);
-        vehicleDto.setYearsOfWarranty(1);
-        MockHttpServletRequestBuilder requestBuilder = contentTypeResult
-                .content((new ObjectMapper()).writeValueAsString(vehicleDto));
-        MockMvcBuilders.standaloneSetup(apiController).build().perform(requestBuilder);
     }
 
     @Test
