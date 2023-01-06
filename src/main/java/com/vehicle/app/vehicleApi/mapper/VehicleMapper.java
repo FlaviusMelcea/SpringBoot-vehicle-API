@@ -7,7 +7,6 @@ import org.mapstruct.Mapping;
 import org.mapstruct.factory.Mappers;
 
 import java.util.List;
-//tst
 
 @Mapper(componentModel = "spring")
 public interface VehicleMapper {

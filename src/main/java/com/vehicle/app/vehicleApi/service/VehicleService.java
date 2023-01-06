@@ -8,30 +8,27 @@ import com.vehicle.app.vehicleApi.repo.VehicleFeaturesRepo;
 import com.vehicle.app.vehicleApi.repo.VehicleRepo;
 import com.vehicle.app.vehicleApi.vehicleBuyback.VehiclesBuyback;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import javax.transaction.Transactional;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 @Service
 @Transactional
 @RequiredArgsConstructor
 public class VehicleService {
-    @Autowired
     private VehicleRepo vehicleRepo;
-    @Autowired
     private VehicleFeaturesRepo vehicleFeaturesRepo;
-
-    public List<Vehicle> findAll() {
-        return vehicleRepo.findAll();
+    public VehicleService(VehicleRepo vehicleRepo, VehicleFeaturesRepo vehicleFeaturesRepo) {
+        this.vehicleRepo = vehicleRepo;
+        this.vehicleFeaturesRepo = vehicleFeaturesRepo;
     }
 
-    public Optional<Vehicle> findById(Integer id) {
-        return vehicleRepo.findById(id);
+    public VehicleDto getById(Integer id) {
+        Vehicle vehicle = vehicleRepo.getById(id);
+
+        return VehicleMapper.INSTANCE.toVehicleDto(vehicle);
     }
 
     public Vehicle save(Vehicle vehicle) {
@@ -40,6 +37,17 @@ public class VehicleService {
         return vehicleRepo.save(vehicle);
     }
 
+    public void save(Vehicle vehicle, Integer id) {
+        vehicle.setId(id);
+        save(vehicle);
+    }
+
+    public List<VehicleDto> getVehicles(){
+        List<VehicleDto> vehicleDtoList = new ArrayList<>();
+        List<Vehicle> vehicleList = vehicleRepo.findAll();
+        vehicleList.forEach(vehicle-> vehicleDtoList.add(VehicleMapper.INSTANCE.toVehicleDto(vehicle)));
+        return vehicleDtoList;
+    }
     public VehicleFeatures save(VehicleFeatures vehicleFeatures) {
         return vehicleFeaturesRepo.save(vehicleFeatures);
     }
@@ -53,20 +61,15 @@ public class VehicleService {
     }
 
     public List<VehiclesBuyback> getAllActiveBuyback() {
-        List<Vehicle> vehicleList = vehicleRepo.findAll();
-        List<VehicleDto> vehicleDtoList = new ArrayList<>();
+        List<Vehicle> vehicleList = vehicleRepo.findVehicleByHasBuybackPromotionTrue();
         List<VehiclesBuyback> vehicleBuyBack = new ArrayList<>();
-        for (Vehicle vehicle : vehicleList) {
-            if (vehicle.getHasBuybackPromotion()) {
-                vehicleDtoList.add(VehicleMapper.INSTANCE.toVehicleDto(vehicle));
-            }
-        }
-        for (VehicleDto vehicleDto : vehicleDtoList) {
+        vehicleList.forEach(vehicle -> {
+            VehicleDto vehicleDto = VehicleMapper.INSTANCE.toVehicleDto(vehicle);
             vehicleBuyBack.add(new VehiclesBuyback(
                     vehicleDto.getBrand(),
                     vehicleDto.getModel(),
                     vehicleDto.getYear()));
-        }
+        });
         return vehicleBuyBack;
     }
 
